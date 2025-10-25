@@ -27,15 +27,14 @@ body{
 .scene.active{display:flex;flex-direction:column}
 
 .heart {
-  position: fixed;
+  position: absolute;
   width: 10px;
   height: 10px;
   background: var(--accent);
   transform: rotate(45deg);
-  animation: floatUp 4s linear infinite;
+  animation: float linear forwards;
   pointer-events:none;
-  
-  z-index:999999;
+  z-index:9999;
   opacity:0.95;
   border-radius:2px;
 }
