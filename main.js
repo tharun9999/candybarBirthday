@@ -144,8 +144,8 @@ const IS_CREATOR = true;
 
   if(IS_CREATOR){
     //time edit here
-    editTimeBtn.disabled = false;
-    editTimeBtn.style.display='inline';
+    editTimeBtn.disabled = true;
+    editTimeBtn.style.display='none';
     editTimeBtn.addEventListener('click', ()=>{
       scheduleInput.style.display='block';
       saveTimeBtn.style.display='inline-block';
