@@ -32,9 +32,9 @@ body{
   height: 10px;
   background: var(--accent);
   transform: rotate(45deg);
-  animation: float linear forwards;
+  animation: floatUp 4s linear infinite;
   pointer-events:none;
-  overflow: visible;
+  
   z-index:999999;
   opacity:0.95;
   border-radius:2px;
