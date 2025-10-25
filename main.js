@@ -1,8 +1,7 @@
-// ---------- PERSONALIZATION ----------
 const PERSON_NAME = "Candybar";
 const MUSIC_URL = "assets/music/ab.mp3"; 
-const IMAGE_URL = "assets/images/surprise.jpg"; 
-const WISH_GIF_URL = ""; 
+const IMAGE_URL = "assets/images/birthday.jpeg"; 
+const WISH_GIF_URL = "assets/images/doa.png"; 
 const DEFAULT_SCHEDULE_ISO = "2025-10-31T00:00:00+05:30"; 
 const IS_CREATOR = true;
 
@@ -42,7 +41,7 @@ const IS_CREATOR = true;
   mainMedia.src = IMAGE_URL;
   openMedia.href = IMAGE_URL;
   wishGif.src = WISH_GIF_URL || IMAGE_URL;
-  giftTextPara.textContent = "May your special day be filled with endless joy and love 💖";
+  giftTextPara.textContent = "This ticket grants you three wishes — use it whenever you wish my dear moon🌙💖";
 
   bgSource.src = MUSIC_URL;
   bgAudio.load();
@@ -144,6 +143,7 @@ const IS_CREATOR = true;
   }
 
   if(IS_CREATOR){
+    //time edit here
     editTimeBtn.disabled = true;
     editTimeBtn.style.display='none';
     editTimeBtn.addEventListener('click', ()=>{
@@ -183,11 +183,23 @@ const IS_CREATOR = true;
     if(heartInterval){ clearInterval(heartInterval); heartInterval=null; }
     document.querySelectorAll('.heart').forEach(h=>h.remove());
   }
-
+  function spawnConfetti(n){
+    for(let i=0;i<n;i++){
+      const el = document.createElement('div');
+      el.style.position='fixed'; el.style.left = (10 + Math.random()*80) + '%'; el.style.top = '-40px';
+      const w = 6 + Math.random()*14; el.style.width = w + 'px'; el.style.height = (w*0.6) + 'px';
+      el.style.background = `hsl(${Math.random()*360} 80% 60%)`; el.style.opacity = 0.95; el.style.zIndex=50;
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(el);
+      const dur = 3000 + Math.random()*2500;
+      el.animate([{transform:`translateY(0) rotate(${Math.random()*360}deg)`, opacity:1},{transform:`translateY(${window.innerHeight + 200}px) rotate(${Math.random()*720}deg)`, opacity:0}], {duration:dur, easing:'cubic-bezier(.2,.8,.2,1)'});
+      setTimeout(()=>{ try{ el.remove(); } catch(e){} }, dur+120);
+    }
+  }
   beginBtn.addEventListener('click',()=>{ showScene(1); spawnHearts(); bgAudio.play(); });
   backBtn1.addEventListener('click',()=>{ stopHearts(); showScene(0); });
-  toScene3.addEventListener('click',()=>{ stopHearts(); showScene(2); });
-  backBtn2.addEventListener('click',()=>{ showScene(1); });
+  toScene3.addEventListener('click',()=>{ stopHearts(); showScene(2); spawnConfetti(82);});
+  backBtn2.addEventListener('click',()=>{ showScene(1); spawnHearts(); });
 
   mainMedia.addEventListener('click',e=>{
     e.preventDefault();
@@ -213,5 +225,3 @@ const IS_CREATOR = true;
   });
 
 })();
-
-
