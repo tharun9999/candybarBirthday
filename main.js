@@ -164,6 +164,7 @@ const IS_CREATOR = true;
     current = idx;
   }
 
+
   // Hearts animation (unchanged)
   let heartInterval=null;
   function spawnHearts(){
