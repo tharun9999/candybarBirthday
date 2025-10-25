@@ -9,17 +9,17 @@ html,body{
   height:100%;margin:0;padding:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   -webkit-font-smoothing:antialiased;
-  overflow: visible !important;
 }
+
 body{
   background: linear-gradient(135deg,var(--bg-a) 0%, var(--bg-b) 100%);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   color:var(--text-dark);
-  overflow: visible !important;
+  overflow:hidden;
 }
-.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom); overflow: visible !important;}
-.card{width:100%;max-width:980px;background:var(--card-bg);border-radius:20px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.12);position:relative; overflow: visible !important;}
+.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);}
+.card{width:100%;max-width:980px;background:var(--card-bg);border-radius:20px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.12);position:relative;overflow:hidden}
 .hero{text-align:center;padding:12px 8px}
 .hero h1{margin:6px 0;font-size:clamp(22px,5vw,40px);color:var(--accent);letter-spacing:-0.02em}
 .hero p{margin:6px 0 12px 0;color:rgba(0,0,0,0.55)}
@@ -28,19 +28,19 @@ body{
 .scene.active{display:flex;flex-direction:column}
 
 .heart {
-  position: fixed;
+  position: fixed; /* CHANGED from absolute to fixed */
   width: 10px;
   height: 10px;
   background: var(--accent);
   transform: rotate(45deg);
-  animation: float linear forwards;
+  animation: floatUp 4s linear infinite;
   pointer-events:none;
-  z-index:9999;
+  z-index:9999 !important;
   opacity:0.95;
   border-radius:2px;
-  /* Default for mobile */
-  animation-duration: 3s;
+  
 }
+
 .heart::before,.heart::after{
   content:"";
   position:absolute;
@@ -49,10 +49,20 @@ body{
 .heart::before{ top:-5px; left:0; }
 .heart::after{ left:-5px; top:0; }
 
-/* Mobile animation (default) */
+/* Mobile animation (default)
 @keyframes float {
   0% { transform: translateY(0) rotate(45deg); opacity: 1; }
   100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+} */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(45deg) scale(0.8);
+    opacity: 0;
+  }
 }
 
 .media{width:100%;max-width:540px;margin:0 auto;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 40px rgba(0,0,0,0.08)}
@@ -73,10 +83,7 @@ body{
   /* Desktop animation */
   @keyframes float {
     0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-    100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
-  }
-  .heart {
-    animation-duration: 5s; /* Slower on desktop */
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
   }
 }
 
