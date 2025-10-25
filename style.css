@@ -27,7 +27,7 @@ body{
 .scene.active{display:flex;flex-direction:column}
 
 .heart {
-  position: absolute;
+  position: fixed;
   width: 10px;
   height: 10px;
   background: var(--accent);
