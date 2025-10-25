@@ -170,6 +170,8 @@ const IS_CREATOR = true;
     heartInterval=setInterval(()=>{
       if(current!==1) return;
       const h=document.createElement('div');
+      h.style.position='fixed'; h.style.left = (10 + Math.random()*80) + '%'; h.style.bottom = '-40px';
+      
       h.className='heart';
       h.style.left=Math.random()*(window.innerWidth-16)+'px';
       h.style.top=(window.innerHeight+30)+'px';

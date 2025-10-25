@@ -9,13 +9,16 @@ html,body{
   height:100%;margin:0;padding:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   -webkit-font-smoothing:antialiased;
+  -webkit-transform: none !important;
+  transform: none !important;
 }
 body{
   background: linear-gradient(135deg,var(--bg-a) 0%, var(--bg-b) 100%);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   color:var(--text-dark);
-  overflow:hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);}
 .card{width:100%;max-width:980px;background:var(--card-bg);border-radius:20px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.12);position:relative;overflow:hidden}
@@ -32,9 +35,10 @@ body{
   height: 10px;
   background: var(--accent);
   transform: rotate(45deg);
-  animation: float linear forwards;
+  animation: floatUp linear forwards;
   pointer-events:none;
-  z-index:9999;
+
+  z-index: 999999;
   opacity:0.95;
   border-radius:2px;
 }
@@ -45,7 +49,7 @@ body{
 }
 .heart::before{ top:-5px; left:0; }
 .heart::after{ left:-5px; top:0; }
-@keyframes float {
+@keyframes floatUp {
   0% { transform: translateY(0) rotate(45deg); opacity: 1; }
   100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
 }
