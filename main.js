@@ -33,7 +33,7 @@ const IS_CREATOR = true;
   countdownDiv.style.fontSize = "16px";
   countdownDiv.style.color = "rgba(0,0,0,0.7)";
   scheduleText.parentNode.insertBefore(countdownDiv, scheduleText.nextSibling);
-  
+
   let current = 0;
 
   //document.getElementById('introName').textContent = PERSON_NAME;
@@ -109,7 +109,6 @@ const IS_CREATOR = true;
 
 // setInterval(updateCountdown, 1000);
 // updateCountdown();
-
   function updateCountdown(){
     const now = new Date();
     const scheduled = new Date(scheduleISO);
@@ -145,8 +144,8 @@ const IS_CREATOR = true;
 
   if(IS_CREATOR){
     //time edit here
-    editTimeBtn.disabled = false;
-    editTimeBtn.style.display='inline';
+    editTimeBtn.disabled = true;
+    editTimeBtn.style.display='none';
     editTimeBtn.addEventListener('click', ()=>{
       scheduleInput.style.display='block';
       saveTimeBtn.style.display='inline-block';
@@ -163,7 +162,6 @@ const IS_CREATOR = true;
     scenes.forEach((s,i)=> s.classList.toggle('active', i===idx));
     current = idx;
   }
-
 
   // Hearts animation (unchanged)
   let heartInterval=null;

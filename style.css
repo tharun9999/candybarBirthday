@@ -10,7 +10,6 @@ html,body{
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   -webkit-font-smoothing:antialiased;
 }
-
 body{
   background: linear-gradient(135deg,var(--bg-a) 0%, var(--bg-b) 100%);
   -webkit-text-size-adjust: 100%;
@@ -28,19 +27,17 @@ body{
 .scene.active{display:flex;flex-direction:column}
 
 .heart {
-  position: fixed; /* CHANGED from absolute to fixed */
+  position: absolute;
   width: 10px;
   height: 10px;
   background: var(--accent);
   transform: rotate(45deg);
-  animation: floatUp 4s linear infinite;
+  animation: float linear forwards;
   pointer-events:none;
-  z-index:9999 !important;
+  z-index:9999;
   opacity:0.95;
   border-radius:2px;
-  
 }
-
 .heart::before,.heart::after{
   content:"";
   position:absolute;
@@ -48,21 +45,9 @@ body{
 }
 .heart::before{ top:-5px; left:0; }
 .heart::after{ left:-5px; top:0; }
-
-/* Mobile animation (default)
 @keyframes float {
   0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-  100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
-} */
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(45deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-110vh) rotate(45deg) scale(0.8);
-    opacity: 0;
-  }
+  100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
 }
 
 .media{width:100%;max-width:540px;margin:0 auto;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 40px rgba(0,0,0,0.08)}
@@ -75,30 +60,8 @@ body{
 .overlay.show{visibility:visible;opacity:1}
 .popup{background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));padding:18px;border-radius:14px;max-width:720px;width:92%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.28)}
 .popup h2{margin:6px 0;color:var(--accent)}
-
-/* Desktop styles */
-@media(min-width:900px){ 
-  .card{padding:26px} 
-  .scenes{min-height:420px}
-  /* Desktop animation */
-  @keyframes float {
-    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
-  }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .heart {
-    animation: fadeOut 2s forwards !important;
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
-}
+@media(min-width:900px){ .card{padding:26px} .scenes{min-height:420px} }
+@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
 
 #editTimeBtn:disabled {
   background-color: #f0f0f0; 
@@ -113,4 +76,4 @@ body{
     border: 1px solid #ccc;
     cursor: not-allowed;
     opacity: 0.7;
-}
+  }
