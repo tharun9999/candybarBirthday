@@ -34,7 +34,7 @@ body{
   transform: rotate(45deg);
   animation: float linear forwards;
   pointer-events:none;
-  z-index:9999;
+  z-index:999999;
   opacity:0.95;
   border-radius:2px;
 }
