@@ -33,7 +33,7 @@ const IS_CREATOR = true;
   countdownDiv.style.fontSize = "16px";
   countdownDiv.style.color = "rgba(0,0,0,0.7)";
   scheduleText.parentNode.insertBefore(countdownDiv, scheduleText.nextSibling);
-
+  
   let current = 0;
 
   //document.getElementById('introName').textContent = PERSON_NAME;
@@ -109,6 +109,7 @@ const IS_CREATOR = true;
 
 // setInterval(updateCountdown, 1000);
 // updateCountdown();
+
   function updateCountdown(){
     const now = new Date();
     const scheduled = new Date(scheduleISO);
