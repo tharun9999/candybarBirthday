@@ -61,8 +61,18 @@ body{
 .popup{background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));padding:18px;border-radius:14px;max-width:720px;width:92%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.28)}
 .popup h2{margin:6px 0;color:var(--accent)}
 @media(min-width:900px){ .card{padding:26px} .scenes{min-height:420px} }
-@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+/* @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} } */
+@media (prefers-reduced-motion: reduce) {
+  .heart {
+    animation: fadeOut 2s forwards !important;
+  }
+}
 
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
 #editTimeBtn:disabled {
   background-color: #f0f0f0; 
   color: #999;               
